@@ -1,0 +1,242 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+
+{% block title %}
+Home | ArticleHub
+{% endblock %}
+
+{% block content %}
+
+<!-- =========================
+     HOME HERO
+========================= -->
+
+<section class="home-hero">
+
+    <div class="hero-content">
+
+        <p class="hero-label">WELCOME TO ARTICLEHUB</p>
+
+        <h1>
+            Ideas Worth
+            <span>Sharing.</span>
+        </h1>
+
+        <p class="hero-description">
+            Discover interesting articles, share your ideas,
+            and connect with a community of curious minds.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="{% url 'codex:list' %}" class="hero-primary">
+                Explore Articles →
+            </a>
+
+            {% if user.is_authenticated %}
+
+            <a href="{% url 'codex:create' %}" class="hero-secondary">
+                Write an Article
+            </a>
+
+            {% else %}
+
+            <a href="{% url 'accounts:signup' %}" class="hero-secondary">
+                Join ArticleHub
+            </a>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+
+    <!-- HERO IMAGE -->
+
+    <div class="hero-image-card">
+
+        <img
+            src="{% static 'images/home-workspace.jpg' %}"
+            alt="Creative workspace"
+        >
+
+        <div class="hero-image-overlay">
+
+            <p>WRITE. SHARE. INSPIRE.</p>
+
+            <h2>
+                Your ideas<br>
+                deserve to be heard.
+            </h2>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FEATURES
+========================= -->
+
+<section class="home-features">
+
+    <div class="features-heading">
+
+        <p class="section-label">
+            WHY ARTICLEHUB?
+        </p>
+
+        <h2>
+            A place for <span>great ideas</span>
+        </h2>
+
+        <p>
+            Read, learn and share knowledge with others.
+        </p>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+
+        <!-- DISCOVER -->
+
+        <div class="feature-card">
+
+            <div class="feature-image">
+
+                <img
+                    src="{% static 'images/discover.jpg' %}"
+                    alt="Books and learning"
+                >
+
+            </div>
+
+            <div class="feature-content">
+
+                <p class="feature-number">01</p>
+
+                <h3>Discover</h3>
+
+                <p>
+                    Explore articles covering different ideas,
+                    stories and topics.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SHARE -->
+
+        <div class="feature-card">
+
+            <div class="feature-image">
+
+                <img
+                    src="{% static 'images/creativity.jpg' %}"
+                    alt="Writing and creativity"
+                >
+
+            </div>
+
+            <div class="feature-content">
+
+                <p class="feature-number">02</p>
+
+                <h3>Share Ideas</h3>
+
+                <p>
+                    Turn your thoughts into articles and
+                    share them with others.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- GROW -->
+
+        <div class="feature-card">
+
+            <div class="feature-image">
+
+                <img
+                    src="{% static 'images/community.jpg' %}"
+                    alt="Community and collaboration"
+                >
+
+            </div>
+
+            <div class="feature-content">
+
+                <p class="feature-number">03</p>
+
+                <h3>Grow Together</h3>
+
+                <p>
+                    Learn from different perspectives and
+                    keep growing every day.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section class="home-cta">
+
+    <div>
+
+        <p class="section-label">
+            START TODAY
+        </p>
+
+        <h2>
+            Have something to say?
+        </h2>
+
+        <p>
+            Share your knowledge and inspire someone
+            with your next article.
+        </p>
+
+    </div>
+
+
+    {% if user.is_authenticated %}
+
+    <a href="{% url 'codex:create' %}" class="cta-button">
+        Write an Article →
+    </a>
+
+    {% else %}
+
+    <a href="{% url 'accounts:signup' %}" class="cta-button">
+        Get Started →
+    </a>
+
+    {% endif %}
+
+</section>
+
+
+{% endblock %}

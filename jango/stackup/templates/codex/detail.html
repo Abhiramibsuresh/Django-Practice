@@ -1,0 +1,98 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}
+{{ rami.title }} | ArticleHub
+{% endblock %}
+
+
+{% block content %}
+
+<section class="article-detail-page">
+
+    <!-- BACK TO ARTICLES -->
+
+    <a href="{% url 'codex:list' %}" class="back-link">
+        ← Back to Articles
+    </a>
+
+
+    <!-- ARTICLE -->
+
+    <article class="article-detail-card">
+
+        <!-- ARTICLE HEADER -->
+
+        <div class="detail-header">
+
+            <span class="detail-tag">
+                ARTICLE
+            </span>
+
+            <h1>
+                {{ rami.title }}
+            </h1>
+
+
+            <div class="detail-meta">
+
+                <span>
+                    ✍️ By ArticleHub
+                </span>
+
+                <span class="meta-dot">
+                    •
+                </span>
+
+                <span>
+                    {{ rami.date }}
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- IMAGE -->
+
+        {% if rami.image %}
+
+        <div class="detail-image">
+
+            <img src="{{ rami.image.url }}"
+                 alt="{{ rami.title }}">
+
+        </div>
+
+        {% endif %}
+
+
+        <!-- ARTICLE BODY -->
+
+        <div class="detail-body">
+
+            <p>
+                {{ rami.body }}
+            </p>
+
+        </div>
+
+
+        <!-- ARTICLE FOOTER -->
+
+        <div class="detail-footer">
+
+            <p>
+                Thanks for reading ❤️
+            </p>
+
+            <a href="{% url 'codex:list' %}">
+                Explore More Articles →
+            </a>
+
+        </div>
+
+    </article>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}
+Login | ArticleHub
+{% endblock %}
+
+{% block content %}
+
+<section class="auth-page">
+
+    <div class="auth-card">
+
+        <div class="auth-header">
+
+            <div class="auth-icon">
+                🔐
+            </div>
+
+            <p class="section-label">WELCOME BACK</p>
+
+            <h1>Login to <span>ArticleHub</span></h1>
+
+            <p>
+                Sign in to continue reading and sharing your ideas.
+            </p>
+
+        </div>
+
+
+        <form method="post" class="auth-form">
+
+            {% csrf_token %}
+
+            {% if form.errors %}
+                <div class="form-error">
+                    Please check your username and password.
+                </div>
+            {% endif %}
+
+            <div class="form-group">
+
+                <label for="{{ form.username.id_for_label }}">
+                    Username
+                </label>
+
+                {{ form.username }}
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="{{ form.password.id_for_label }}">
+                    Password
+                </label>
+
+                {{ form.password }}
+
+            </div>
+
+
+            <button type="submit" class="auth-button">
+                Login →
+            </button>
+
+        </form>
+
+
+        <div class="auth-footer">
+
+            <p>
+                Don't have an account?
+                <a href="{% url 'accounts:signup' %}">
+                    Create an account
+                </a>
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

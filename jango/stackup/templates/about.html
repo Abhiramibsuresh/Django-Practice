@@ -1,0 +1,223 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}
+About | ArticleHub
+{% endblock %}
+
+{% block content %}
+
+<section class="about-page">
+
+    <!-- ABOUT HERO -->
+
+    <div class="about-hero">
+
+        <div class="about-hero-content">
+
+            <p class="section-label">
+                ABOUT ARTICLEHUB
+            </p>
+
+            <h1>
+                A place where
+                <span>ideas come alive.</span>
+            </h1>
+
+            <p>
+                ArticleHub is a simple space where people can
+                discover interesting ideas, share their knowledge,
+                and inspire others through writing.
+            </p>
+
+        </div>
+
+
+        <div class="about-hero-card">
+
+            <div class="about-icon">
+                <i data-lucide="lightbulb"></i>
+            </div>
+
+            <h2>
+                Think. Write. Share.
+            </h2>
+
+            <p>
+                Every idea has the potential to inspire someone.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- OUR PURPOSE -->
+
+    <section class="about-purpose">
+
+        <div class="about-section-heading">
+
+            <p class="section-label">
+                OUR PURPOSE
+            </p>
+
+            <h2>
+                Why <span>ArticleHub?</span>
+            </h2>
+
+        </div>
+
+
+        <div class="purpose-content">
+
+            <p>
+                We believe that everyone has something valuable
+                to share. ArticleHub provides a simple platform
+                for expressing thoughts, sharing knowledge and
+                discovering new perspectives.
+            </p>
+
+            <p>
+                Whether you enjoy reading or writing, ArticleHub
+                is designed to make sharing ideas simple,
+                meaningful and enjoyable.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- VALUES -->
+
+    <section class="about-values">
+
+        <div class="about-section-heading center-heading">
+
+            <p class="section-label">
+                WHAT WE VALUE
+            </p>
+
+            <h2>
+                Built around <span>ideas</span>
+            </h2>
+
+        </div>
+
+
+        <div class="values-grid">
+
+
+            <!-- KNOWLEDGE -->
+
+            <div class="value-card">
+
+                <div class="value-icon">
+                    <i data-lucide="book-open"></i>
+                </div>
+
+                <h3>
+                    Knowledge
+                </h3>
+
+                <p>
+                    Learn something new by exploring different
+                    articles and perspectives.
+                </p>
+
+            </div>
+
+
+            <!-- CREATIVITY -->
+
+            <div class="value-card">
+
+                <div class="value-icon">
+                    <i data-lucide="pen-line"></i>
+                </div>
+
+                <h3>
+                    Creativity
+                </h3>
+
+                <p>
+                    Express your thoughts and turn your ideas
+                    into meaningful stories.
+                </p>
+
+            </div>
+
+
+            <!-- COMMUNITY -->
+
+            <div class="value-card">
+
+                <div class="value-icon">
+                    <i data-lucide="users"></i>
+                </div>
+
+                <h3>
+                    Community
+                </h3>
+
+                <p>
+                    Share ideas with others and learn from
+                    different experiences.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- FINAL CTA -->
+
+    <section class="about-cta">
+
+        <div>
+
+            <p class="section-label">
+                BE PART OF IT
+            </p>
+
+            <h2>
+                Have an idea to share?
+            </h2>
+
+            <p>
+                Start writing and let your ideas reach others.
+            </p>
+
+        </div>
+
+
+        {% if user.is_authenticated %}
+
+        <a href="{% url 'codex:create' %}" class="cta-button">
+            + Write an Article
+        </a>
+
+        {% else %}
+
+        <a href="{% url 'accounts:signup' %}" class="cta-button">
+            Join ArticleHub →
+        </a>
+
+        {% endif %}
+
+
+    </section>
+
+</section>
+
+
+<!-- LUCIDE ICONS -->
+
+<script>
+    lucide.createIcons();
+</script>
+
+{% endblock %}

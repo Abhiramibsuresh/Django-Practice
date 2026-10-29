@@ -1,0 +1,1742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Movies | FilmFlix</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+
+            background: #100d18;
+
+            color: #f5f0ff;
+
+            min-height: 100vh;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        nav {
+
+            height: 72px;
+
+            padding: 0 7%;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            background: #0b0910;
+
+            border-bottom: 1px solid #2a2135;
+        }
+
+
+        .logo {
+
+            font-size: 27px;
+
+            font-weight: bold;
+
+            color: #ffffff;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        .nav-links {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+
+        .nav-links a {
+
+            text-decoration: none;
+
+            color: #ddd3ed;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            padding: 9px 15px;
+
+            border-radius: 20px;
+
+            transition: 0.3s ease;
+        }
+
+
+        .nav-links a:hover {
+
+            background: #8b5cf6;
+
+            color: #ffffff;
+        }
+
+
+        .nav-links .active {
+
+            background: #8b5cf6;
+
+            color: #ffffff;
+        }
+
+
+        /* =====================================================
+           MAIN CONTAINER
+        ===================================================== */
+
+        .container {
+
+            width: 88%;
+
+            max-width: 1250px;
+
+            margin: auto;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .header {
+
+            padding: 42px 0 25px;
+        }
+
+
+        .header h1 {
+
+            font-size: 38px;
+
+            margin-bottom: 8px;
+
+            color: #f5f0ff;
+        }
+
+
+        .header h1 span {
+
+            color: #b78cff;
+        }
+
+
+        .header p {
+
+            color: #aaa0b8;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           SEARCH
+        ===================================================== */
+
+        .search {
+
+            margin-top: 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            background: #191522;
+
+            border: 1px solid #352a44;
+
+            border-radius: 12px;
+
+            padding: 5px;
+
+            box-shadow:
+                0 8px 25px rgba(112, 70, 180, 0.20);
+        }
+
+
+        .search input {
+
+            flex: 1;
+
+            border: none;
+
+            outline: none;
+
+            padding: 14px 17px;
+
+            font-size: 14px;
+
+            color: #f5f0ff;
+
+            background: transparent;
+        }
+
+
+        .search input::placeholder {
+
+            color: #766b82;
+        }
+
+
+        .search button {
+
+            border: none;
+
+            background: #8b5cf6;
+
+            color: white;
+
+            padding: 13px 25px;
+
+            border-radius: 9px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s ease;
+        }
+
+
+        .search button:hover {
+
+            background: #6d3fd1;
+
+            transform: translateY(-1px);
+        }
+
+
+        /* CINEMATIC LAVENDER ENHANCEMENTS */
+
+        body {
+            background:
+                radial-gradient(circle at 10% 0%, rgba(139, 92, 246, 0.12), transparent 32%),
+                radial-gradient(circle at 90% 15%, rgba(183, 140, 255, 0.08), transparent 28%),
+                #100d18;
+        }
+
+        .logo {
+            color: #ffffff;
+            text-shadow: 0 0 18px rgba(139, 92, 246, 0.45);
+        }
+
+        .section-header h2 {
+            border-left: 4px solid #8b5cf6;
+            padding-left: 12px;
+        }
+
+        .movie-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .movie-card:hover {
+            border-color: #8b5cf6;
+            box-shadow: 0 16px 35px rgba(139, 92, 246, 0.22);
+        }
+
+        .search:focus-within {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.14),
+                        0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .search button {
+            background: linear-gradient(135deg, #9b6cff, #7040d8);
+        }
+
+        .search button:hover {
+            background: linear-gradient(135deg, #a77cff, #8050e8);
+        }
+
+        .rating {
+            background: rgba(24, 17, 34, 0.92);
+            border: 1px solid rgba(183, 140, 255, 0.25);
+        }
+
+        /* =====================================================
+           MOVIE SECTION
+        ===================================================== */
+
+        .movie-section {
+
+            padding: 25px 0 10px;
+        }
+
+
+        .section-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 20px;
+        }
+
+
+        .section-header h2 {
+
+            font-size: 22px;
+
+            color: #f5f0ff;
+        }
+
+
+        .section-header span {
+
+            color: #b78cff;
+
+            font-size: 12px;
+
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           SEARCH RESULTS
+        ===================================================== */
+
+        .search-results {
+
+            padding: 25px 0 15px;
+        }
+
+
+        .search-results-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 20px;
+        }
+
+
+        .search-results-header h2 {
+
+            font-size: 21px;
+
+            color: #f5f0ff;
+        }
+
+
+        .search-results-header span {
+
+            color: #b78cff;
+        }
+
+
+        /* =====================================================
+           MOVIE GRID
+        ===================================================== */
+
+        .movie-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fill, minmax(210px, 1fr));
+
+            gap: 22px;
+        }
+
+
+        /* =====================================================
+           MOVIE CARD
+        ===================================================== */
+
+        .movie-card {
+
+            background: #191522;
+
+            border: 1px solid #33283f;
+
+            border-radius: 15px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 6px 18px rgba(0, 0, 0, 0.35);
+
+            transition: 0.3s ease;
+        }
+
+
+        .movie-card:hover {
+
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 15px 30px rgba(139, 92, 246, 0.24);
+        }
+
+
+        /* =====================================================
+           POSTER
+        ===================================================== */
+
+        .poster {
+
+            height: 295px;
+
+            position: relative;
+
+            background: #241d30;
+
+            overflow: hidden;
+        }
+
+
+        .poster img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition: 0.4s ease;
+        }
+
+
+        .movie-card:hover .poster img {
+
+            transform: scale(1.04);
+        }
+
+
+        /* =====================================================
+           NO POSTER
+        ===================================================== */
+
+        .poster-placeholder {
+
+            width: 100%;
+
+            height: 100%;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            background: #241d30;
+
+            color: #a99ab8;
+
+            font-size: 42px;
+        }
+
+
+        /* =====================================================
+           RATING
+        ===================================================== */
+
+        .rating {
+
+            position: absolute;
+
+            top: 10px;
+
+            right: 10px;
+
+            background:
+                rgba(38, 25, 50, 0.90);
+
+            color: white;
+
+            padding: 6px 9px;
+
+            border-radius: 8px;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            backdrop-filter: blur(5px);
+        }
+
+
+        /* =====================================================
+           MOVIE DETAILS
+        ===================================================== */
+
+        .details {
+
+            padding: 15px;
+        }
+
+
+        .details h3 {
+
+            font-size: 16px;
+
+            margin-bottom: 7px;
+
+            line-height: 1.3;
+
+            color: #f5f0ff;
+
+            min-height: 21px;
+        }
+
+
+        .year {
+
+            color: #9d91a8;
+
+            font-size: 12px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .overview {
+
+            color: #aaa0b0;
+
+            font-size: 12px;
+
+            line-height: 1.55;
+
+            min-height: 55px;
+        }
+
+
+        /* =====================================================
+           BOTTOM INFO
+        ===================================================== */
+
+        .bottom {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-top: 13px;
+
+            padding-top: 10px;
+
+            border-top: 1px solid #2c2335;
+
+            color: #90849b;
+
+            font-size: 10px;
+        }
+
+
+        .language {
+
+            background: #2a2038;
+
+            color: #c09aff;
+
+            padding: 4px 7px;
+
+            border-radius: 6px;
+
+            font-weight: bold;
+        }
+
+
+        /* =====================================================
+           ERROR MESSAGE
+        ===================================================== */
+
+        .error-message {
+
+            background: #201624;
+
+            border: 1px solid #432b4d;
+
+            color: #c2a9c8;
+
+            padding: 15px 18px;
+
+            border-radius: 10px;
+
+            font-size: 13px;
+
+            margin-top: 15px;
+        }
+
+
+        .error-message strong {
+
+            color: #dfb5eb;
+        }
+
+
+        /* =====================================================
+           NO RESULTS
+        ===================================================== */
+
+        .no-results {
+
+            text-align: center;
+
+            padding: 45px 20px;
+
+            background: #191522;
+
+            border: 1px solid #33283f;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 6px 18px rgba(75, 45, 105, 0.06);
+
+            margin: 20px 0;
+        }
+
+
+        .no-results .icon {
+
+            font-size: 35px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .no-results h3 {
+
+            margin-bottom: 7px;
+
+            color: #f5f0ff;
+        }
+
+
+        .no-results p {
+
+            color: #9990a3;
+
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            text-align: center;
+
+            padding: 22px;
+
+            margin-top: 40px;
+
+            border-top: 1px solid #2d2436;
+
+            color: #766b82;
+
+            font-size: 11px;
+        }
+
+
+        footer strong {
+
+            color: #a878ff;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+            nav {
+
+                height: auto;
+
+                min-height: 70px;
+
+                padding: 12px 5%;
+            }
+
+
+            .logo {
+
+                font-size: 22px;
+            }
+
+
+            .nav-links {
+
+                gap: 3px;
+            }
+
+
+            .nav-links a {
+
+                font-size: 12px;
+
+                padding: 8px 9px;
+            }
+
+
+            .container {
+
+                width: 92%;
+            }
+
+
+            .header {
+
+                padding: 30px 0 20px;
+            }
+
+
+            .header h1 {
+
+                font-size: 30px;
+            }
+
+
+            .search {
+
+                flex-direction: column;
+
+                padding: 6px;
+            }
+
+
+            .search input {
+
+                width: 100%;
+            }
+
+
+            .search button {
+
+                width: 100%;
+
+                height: 42px;
+            }
+
+
+            .movie-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+                gap: 14px;
+            }
+
+
+            .poster {
+
+                height: 240px;
+            }
+
+
+            .details {
+
+                padding: 12px;
+            }
+
+
+            .details h3 {
+
+                font-size: 14px;
+            }
+
+
+            .overview {
+
+                font-size: 11px;
+            }
+
+
+            .bottom {
+
+                font-size: 9px;
+            }
+
+
+            .section-header h2 {
+
+                font-size: 18px;
+            }
+
+        }
+
+
+        /* =====================================================
+           SMALL MOBILE
+        ===================================================== */
+
+        @media (max-width: 430px) {
+
+            .nav-links a {
+
+                padding: 7px 6px;
+
+                font-size: 11px;
+            }
+
+
+            .logo {
+
+                font-size: 19px;
+            }
+
+
+            .movie-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+                gap: 10px;
+            }
+
+
+            .poster {
+
+                height: 210px;
+            }
+
+
+            .section-header span {
+
+                font-size: 10px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ===================================================== -->
+
+    <nav>
+
+        <div class="logo">
+            FilmFlix
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="/">
+                Home
+            </a>
+
+
+            <a href="{% url 'about' %}">
+                About
+            </a>
+
+
+            <a href="/movies/" class="active">
+                Movies
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ===================================================== -->
+
+    <main class="container">
+
+
+        <!-- =================================================
+             HEADER
+        ================================================= -->
+
+        <section class="header">
+
+            <h1>
+                Explore <span>Movies</span>
+            </h1>
+
+
+            <p>
+                Discover trending movies, new releases,
+                top-rated films and upcoming movies.
+            </p>
+
+
+            <!-- SEARCH -->
+
+            <form
+                method="GET"
+                action="{% url 'movies' %}"
+                class="search"
+            >
+
+                <input
+                    type="text"
+                    name="q"
+                    placeholder="Search for a movie..."
+                    value="{{ request.GET.q|default:'' }}"
+                    autocomplete="off"
+                >
+
+
+                <button type="submit">
+                    🔍 Search
+                </button>
+
+            </form>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SEARCH RESULTS
+        ================================================= -->
+
+        {% if request.GET.q %}
+
+        <section class="search-results">
+
+
+            <div class="search-results-header">
+
+                <h2>
+
+                    🔍 Search Results for
+
+                    <span>
+                        "{{ request.GET.q }}"
+                    </span>
+
+                </h2>
+
+            </div>
+
+
+            {% if error %}
+
+                <div class="error-message">
+
+                    <strong>
+                        ⚠ Something went wrong.
+                    </strong>
+
+                    {{ error }}
+
+                </div>
+
+
+            {% elif movies %}
+
+
+                <div class="movie-grid">
+
+
+                    {% for movie in movies %}
+
+
+                    <div class="movie-card">
+
+
+                        <!-- POSTER -->
+
+                        <div class="poster">
+
+
+                            {% if movie.poster_path %}
+
+                                <img
+                                    src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}"
+                                    alt="{{ movie.title }}"
+                                    loading="lazy"
+                                >
+
+                            {% else %}
+
+                                <div class="poster-placeholder">
+                                    🎬
+                                </div>
+
+                            {% endif %}
+
+
+                            <!-- RATING -->
+
+                            <div class="rating">
+
+                                ⭐
+                                {{ movie.vote_average|floatformat:1 }}
+
+                            </div>
+
+
+                        </div>
+
+
+                        <!-- DETAILS -->
+
+                        <div class="details">
+
+
+                            <h3>
+                                {{ movie.title }}
+                            </h3>
+
+
+                            <p class="year">
+
+                                📅
+
+                                {% if movie.release_date %}
+
+                                    {{ movie.release_date|slice:":4" }}
+
+                                {% else %}
+
+                                    Year unavailable
+
+                                {% endif %}
+
+                            </p>
+
+
+                            <p class="overview">
+
+                                {% if movie.overview %}
+
+                                    {{ movie.overview|truncatewords:22 }}
+
+                                {% else %}
+
+                                    No description available.
+
+                                {% endif %}
+
+                            </p>
+
+
+                            <div class="bottom">
+
+                                <span>
+
+                                    ⭐
+                                    {{ movie.vote_count }}
+                                    votes
+
+                                </span>
+
+
+                                <span class="language">
+
+                                    {% if movie.original_language %}
+
+                                        {{ movie.original_language|upper }}
+
+                                    {% else %}
+
+                                        N/A
+
+                                    {% endif %}
+
+                                </span>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    {% endfor %}
+
+
+                </div>
+
+
+            {% else %}
+
+
+                <div class="no-results">
+
+                    <div class="icon">
+                        🎬
+                    </div>
+
+
+                    <h3>
+                        No movies found
+                    </h3>
+
+
+                    <p>
+                        Try searching for another movie.
+                    </p>
+
+                </div>
+
+
+            {% endif %}
+
+
+        </section>
+
+        {% endif %}
+
+
+
+        <!-- =================================================
+             TRENDING MOVIES
+        ================================================= -->
+
+        <section class="movie-section">
+
+
+            <div class="section-header">
+
+                <h2>
+                    🔥 Trending Movies
+                </h2>
+
+
+                <span>
+                    Updated weekly
+                </span>
+
+            </div>
+
+
+            {% if trending %}
+
+
+            <div class="movie-grid">
+
+
+                {% for movie in trending %}
+
+
+                <div class="movie-card">
+
+
+                    <!-- POSTER -->
+
+                    <div class="poster">
+
+
+                        {% if movie.poster_path %}
+
+                            <img
+                                src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}"
+                                alt="{{ movie.title }}"
+                                loading="lazy"
+                            >
+
+                        {% else %}
+
+                            <div class="poster-placeholder">
+                                🎬
+                            </div>
+
+                        {% endif %}
+
+
+                        <div class="rating">
+
+                            ⭐
+                            {{ movie.vote_average|floatformat:1 }}
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- DETAILS -->
+
+                    <div class="details">
+
+
+                        <h3>
+                            {{ movie.title }}
+                        </h3>
+
+
+                        <p class="year">
+
+                            📅
+
+                            {% if movie.release_date %}
+
+                                {{ movie.release_date|slice:":4" }}
+
+                            {% else %}
+
+                                Year unavailable
+
+                            {% endif %}
+
+                        </p>
+
+
+                        <p class="overview">
+
+                            {% if movie.overview %}
+
+                                {{ movie.overview|truncatewords:22 }}
+
+                            {% else %}
+
+                                No description available.
+
+                            {% endif %}
+
+                        </p>
+
+
+                        <div class="bottom">
+
+                            <span>
+
+                                ⭐
+                                {{ movie.vote_count }}
+                                votes
+
+                            </span>
+
+
+                            <span class="language">
+
+                                {{ movie.original_language|upper }}
+
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+                {% endfor %}
+
+
+            </div>
+
+
+            {% else %}
+
+                <div class="no-results">
+
+                    <div class="icon">
+                        🎬
+                    </div>
+
+                    <h3>
+                        Trending movies unavailable
+                    </h3>
+
+                    <p>
+                        Please try again later.
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             NOW PLAYING
+        ================================================= -->
+
+        <section class="movie-section">
+
+
+            <div class="section-header">
+
+                <h2>
+                    🎬 Now Playing
+                </h2>
+
+
+                <span>
+                    In theatres
+                </span>
+
+            </div>
+
+
+            {% if now_playing %}
+
+
+            <div class="movie-grid">
+
+
+                {% for movie in now_playing %}
+
+
+                <div class="movie-card">
+
+
+                    <div class="poster">
+
+
+                        {% if movie.poster_path %}
+
+                            <img
+                                src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}"
+                                alt="{{ movie.title }}"
+                                loading="lazy"
+                            >
+
+                        {% else %}
+
+                            <div class="poster-placeholder">
+                                🎬
+                            </div>
+
+                        {% endif %}
+
+
+                        <div class="rating">
+
+                            ⭐
+                            {{ movie.vote_average|floatformat:1 }}
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="details">
+
+
+                        <h3>
+                            {{ movie.title }}
+                        </h3>
+
+
+                        <p class="year">
+
+                            📅
+
+                            {% if movie.release_date %}
+
+                                {{ movie.release_date|slice:":4" }}
+
+                            {% else %}
+
+                                Year unavailable
+
+                            {% endif %}
+
+                        </p>
+
+
+                        <p class="overview">
+
+                            {% if movie.overview %}
+
+                                {{ movie.overview|truncatewords:22 }}
+
+                            {% else %}
+
+                                No description available.
+
+                            {% endif %}
+
+                        </p>
+
+
+                        <div class="bottom">
+
+                            <span>
+
+                                ⭐
+                                {{ movie.vote_count }}
+                                votes
+
+                            </span>
+
+
+                            <span class="language">
+
+                                {{ movie.original_language|upper }}
+
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+                {% endfor %}
+
+
+            </div>
+
+
+            {% endif %}
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             TOP RATED
+        ================================================= -->
+
+        <section class="movie-section">
+
+
+            <div class="section-header">
+
+                <h2>
+                    ⭐ Top Rated
+                </h2>
+
+
+                <span>
+                    Highest rated
+                </span>
+
+            </div>
+
+
+            {% if top_rated %}
+
+
+            <div class="movie-grid">
+
+
+                {% for movie in top_rated %}
+
+
+                <div class="movie-card">
+
+
+                    <div class="poster">
+
+
+                        {% if movie.poster_path %}
+
+                            <img
+                                src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}"
+                                alt="{{ movie.title }}"
+                                loading="lazy"
+                            >
+
+                        {% else %}
+
+                            <div class="poster-placeholder">
+                                🎬
+                            </div>
+
+                        {% endif %}
+
+
+                        <div class="rating">
+
+                            ⭐
+                            {{ movie.vote_average|floatformat:1 }}
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="details">
+
+
+                        <h3>
+                            {{ movie.title }}
+                        </h3>
+
+
+                        <p class="year">
+
+                            📅
+
+                            {% if movie.release_date %}
+
+                                {{ movie.release_date|slice:":4" }}
+
+                            {% else %}
+
+                                Year unavailable
+
+                            {% endif %}
+
+                        </p>
+
+
+                        <p class="overview">
+
+                            {% if movie.overview %}
+
+                                {{ movie.overview|truncatewords:22 }}
+
+                            {% else %}
+
+                                No description available.
+
+                            {% endif %}
+
+                        </p>
+
+
+                        <div class="bottom">
+
+                            <span>
+
+                                ⭐
+                                {{ movie.vote_count }}
+                                votes
+
+                            </span>
+
+
+                            <span class="language">
+
+                                {{ movie.original_language|upper }}
+
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+                {% endfor %}
+
+
+            </div>
+
+
+            {% endif %}
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             UPCOMING MOVIES
+        ================================================= -->
+
+        <section class="movie-section">
+
+
+            <div class="section-header">
+
+                <h2>
+                    🚀 Upcoming Movies
+                </h2>
+
+
+                <span>
+                    Coming soon
+                </span>
+
+            </div>
+
+
+            {% if upcoming %}
+
+
+            <div class="movie-grid">
+
+
+                {% for movie in upcoming %}
+
+
+                <div class="movie-card">
+
+
+                    <div class="poster">
+
+
+                        {% if movie.poster_path %}
+
+                            <img
+                                src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}"
+                                alt="{{ movie.title }}"
+                                loading="lazy"
+                            >
+
+                        {% else %}
+
+                            <div class="poster-placeholder">
+                                🎬
+                            </div>
+
+                        {% endif %}
+
+
+                        <div class="rating">
+
+                            ⭐
+                            {{ movie.vote_average|floatformat:1 }}
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="details">
+
+
+                        <h3>
+                            {{ movie.title }}
+                        </h3>
+
+
+                        <p class="year">
+
+                            📅
+
+                            {% if movie.release_date %}
+
+                                {{ movie.release_date|slice:":4" }}
+
+                            {% else %}
+
+                                Release date unavailable
+
+                            {% endif %}
+
+                        </p>
+
+
+                        <p class="overview">
+
+                            {% if movie.overview %}
+
+                                {{ movie.overview|truncatewords:22 }}
+
+                            {% else %}
+
+                                No description available.
+
+                            {% endif %}
+
+                        </p>
+
+
+                        <div class="bottom">
+
+                            <span>
+
+                                ⭐
+                                {{ movie.vote_count }}
+                                votes
+
+                            </span>
+
+
+                            <span class="language">
+
+                                {{ movie.original_language|upper }}
+
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+                {% endfor %}
+
+
+            </div>
+
+
+            {% endif %}
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer>
+
+        © 2026 <strong>FilmFlix</strong> · Movie Discovery
+
+    </footer>
+
+
+</body>
+
+</html>

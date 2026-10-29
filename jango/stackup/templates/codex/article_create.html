@@ -1,0 +1,85 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}
+Create Article | ArticleHub
+{% endblock %}
+
+{% block content %}
+
+<section class="create-page">
+
+    <div class="create-header">
+
+        <p class="section-label">SHARE YOUR IDEAS</p>
+
+        <h1>
+            Create a <span>New Article</span>
+        </h1>
+
+        <p>
+            Turn your thoughts into an article and share
+            them with the ArticleHub community.
+        </p>
+
+    </div>
+
+
+    <div class="create-card">
+
+        <form method="post" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                <div class="form-error">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+
+            {% for field in form %}
+
+                <div class="create-form-group">
+
+                    <label for="{{ field.id_for_label }}">
+                        {{ field.label }}
+                    </label>
+
+                    {{ field }}
+
+                    {% if field.help_text %}
+                        <small class="help-text">
+                            {{ field.help_text }}
+                        </small>
+                    {% endif %}
+
+                    {% if field.errors %}
+                        <div class="field-error">
+                            {{ field.errors }}
+                        </div>
+                    {% endif %}
+
+                </div>
+
+            {% endfor %}
+
+
+            <div class="create-actions">
+
+                <a href="{% url 'codex:list' %}" class="cancel-button">
+                    Cancel
+                </a>
+
+                <button type="submit" class="publish-button">
+                    Publish Article →
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+
+{% endblock %}

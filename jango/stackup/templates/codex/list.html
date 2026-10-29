@@ -1,0 +1,148 @@
+{% extends 'base_layout.html' %}
+
+{% block title %}Articles | Our Blog{% endblock %}
+
+{% block content %}
+
+<section class="articles-page">
+
+    <!-- HEADER -->
+
+    <div class="articles-heading">
+
+        <div>
+            <p class="section-label">
+                DISCOVER & READ
+            </p>
+
+            <h1>
+                Explore <span>Articles</span>
+            </h1>
+
+            <p class="section-description">
+                Discover interesting ideas, stories and knowledge
+                shared by our community.
+            </p>
+        </div>
+
+
+        {% if user.is_authenticated %}
+
+        <a href="{% url 'codex:create' %}"
+           class="write-button">
+
+            + Write an Article
+
+        </a>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- ARTICLE GRID -->
+
+    <div class="article-grid">
+
+        {% for article in articles %}
+
+        <article class="article-card">
+
+            <!-- IMAGE -->
+
+            <div class="article-image">
+
+                {% if article.thumb %}
+
+                    <img src="{{ article.thumb.url }}"
+                         alt="{{ article.title }}">
+
+                {% else %}
+
+                    <div class="article-placeholder">
+                        ✍️
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- CONTENT -->
+
+            <div class="article-body">
+
+                <span class="article-tag">
+                    ARTICLE
+                </span>
+
+
+                <h2>
+
+                    <a href="{% url 'codex:detail' slug=article.slug %}">
+                        {{ article.title }}
+                    </a>
+
+                </h2>
+
+
+                <p class="article-description">
+                    {{ article.snippet }}
+                </p>
+
+
+                <div class="article-bottom">
+
+                    <span class="author">
+                        By {{ article.author }}
+                    </span>
+
+
+                    <a href="{% url 'codex:detail' slug=article.slug %}"
+                       class="read-link">
+
+                        Read More →
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        {% empty %}
+
+        <div class="no-articles">
+
+            <div class="no-articles-icon">
+                📚
+            </div>
+
+            <h2>No articles yet</h2>
+
+            <p>
+                Be the first person to share an idea.
+            </p>
+
+            {% if user.is_authenticated %}
+
+            <a href="{% url 'codex:create' %}"
+               class="write-button">
+
+                Write an Article
+
+            </a>
+
+            {% endif %}
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}
